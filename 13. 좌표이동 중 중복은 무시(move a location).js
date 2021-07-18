@@ -56,31 +56,34 @@
 // 문제의 예시와 같습니다.
 
 function solution(dirs) {
-  let robot = [0, 0];
-  let road = [];
-  let arr = dirs.split("");
-  let answer = 0;
+  const arrayDirs = dirs.split("");
+  const robot = [0, 0];
+  const road = [];
 
-  arr.forEach(v => {
-    if (v === "U") {
+  const createRoadName = (pre, next) => {
+    const [preX, preY] = pre;
+    const [nextX, nextY] = next;
+
+    if (preX < nextX || preY > nextY) return "" + preX + preY + nextX + nextY;
+    else if (preX > nextX || preY < nextY) return "" + nextX + nextY + preX + preY;
+  };
+
+  arrayDirs.forEach(v => {
+    if (v === "U" && robot[1] + 1 <= 5) {
+      road.push(createRoadName([...robot], [robot[0], robot[1] + 1]));
       robot[1] += 1;
-      road.push([...robot]);
-      answer++;
-    } else if (v === "D") {
+    } else if (v === "D" && robot[1] - 1 >= -5) {
+      road.push(createRoadName([...robot], [robot[0], robot[1] - 1]));
       robot[1] -= 1;
-      road.push([...robot]);
-      answer++;
-    } else if (v === "R") {
+    } else if (v === "R" && robot[0] + 1 <= 5) {
+      road.push(createRoadName([...robot], [robot[0] + 1, robot[1]]));
       robot[0] += 1;
-      road.push([...robot]);
-      answer++;
-    } else if (v === "L") {
+    } else if (v === "L" && robot[0] - 1 >= -5) {
+      road.push(createRoadName([...robot], [robot[0] - 1, robot[1]]));
       robot[0] -= 1;
-      road.push([...robot]);
-      answer++;
     }
   });
-  return answer.filter((v, i, arr) => arr.indexOf(arr.find(w => w[0] === v[0] && w[1] === v[1])) === i).length;
+  return road.filter((v, i, arr) => arr.indexOf(v) === i).length;
 }
 
 console.log(solution("ULURRDLLU"));
