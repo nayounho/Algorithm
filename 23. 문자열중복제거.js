@@ -17,7 +17,7 @@ function solution(s) {
   const arrayS = [];
 
   for (let i = 0; i < s.length; i++) {
-    if (!arrayS.length || arrayS[arrayS.length - 1] !== s[i]) arrayS.push(s[i]);
+    if (!arrayS.length || stack[arrayS.length - 1] !== s[i]) arrayS.push(s[i]);
     else arrayS.pop();
   }
   return arrayS.length ? 0 : 1;
