@@ -13,14 +13,16 @@
 // baabaa	   1
 // cdcd	     0
 
-function solution(s) {
-  const arrayS = [];
+function solution(S) {
+  const arrayS = S.split("");
+  const temp = [];
 
-  for (let i = 0; i < s.length; i++) {
-    if (!arrayS.length || stack[arrayS.length - 1] !== s[i]) arrayS.push(s[i]);
-    else arrayS.pop();
-  }
-  return arrayS.length ? 0 : 1;
+  arrayS.forEach(v => {
+    if (!temp.length || temp[temp.length - 1] !== v) temp.push(v);
+    else temp.pop();
+  });
+
+  return temp.length ? 0 : 1;
 }
 
 console.log(solution("baabaa"));
