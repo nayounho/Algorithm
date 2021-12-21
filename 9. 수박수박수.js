@@ -27,17 +27,16 @@ console.log('n이 4인 경우: '+ solution(4));
 //   return trans.join('');
 // }
 
-/* 클린 코드 1
-function waterMelon(n) {
-  const index = Array.from({length: n}, (_,i) =>
-                           i % 2 ?  '박' : '수'
-                          );
-  return index.join('');
-}
+// 클린 코드 1
+// function waterMelon(n) {
+//   const index = Array.from({length: n}, (_,i) =>
+//                            i % 2 ?  '박' : '수'
+//                           );
+//   return index.join('');
+// }
 
-클린 코드 2
-
-function solution(n) {
-const arr = '수박'.repeat(n).slice(0,n)
-return arr
-}
+// 클린 코드 2
+// function solution(n) {
+// const arr = '수박'.repeat(n).slice(0,n)
+// return arr
+// }
