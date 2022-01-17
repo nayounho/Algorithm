@@ -21,7 +21,7 @@ function solution(s) {
     +arr[i] || +arr[i] === 0 ? result.push(true) : result.push(false)
     } 
   }else result.push(false)
-  console.log(result)
+  
   return result.includes(false) ? false : true
 }
 
